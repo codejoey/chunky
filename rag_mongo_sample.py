@@ -8,8 +8,8 @@ from langchain_openai.chat_models import ChatOpenAI
 from langchain_core.prompts import PromptTemplate
 from langchain_core.runnables import RunnableParallel, RunnablePassthrough
 from langchain_core.output_parsers import StrOutputParser
-from langchain.text_splitter import RecursiveCharacterTextSplitter
-
+from langchain.text_splitter import NLTKTextSplitter
+# import textsplit
 
 import os
 import key_param
@@ -36,13 +36,12 @@ collection = db[COLLECTION_NAME]
 ATLAS_VECTOR_SEARCH_INDEX_NAME = "vector_index"
 
 # Load the data
-loader = PyPDFLoader("data/emp-policy.pdf")
+loader = PyPDFLoader("data/lyft_2021.pdf")
 data = loader.load()
 print(len(data))
 
 # Split the docs and create embeddings
-text_splitter = RecursiveCharacterTextSplitter(chunk_size=300, 
-                                               chunk_overlap=100)
+text_splitter = NLTKTextSplitter(chunk_size=3000, chunk_overlap=100)
 chunks = text_splitter.split_documents(data)
 embeddings = OpenAIEmbeddings(openai_api_key=key_param.openai_api_key, disallowed_special=())
 
@@ -77,5 +76,5 @@ retrieval_chain = (
     | model 
     | output_parser
 )
-response = retrieval_chain.invoke("What is the severance pay for an employee during a layoff?")
+response = retrieval_chain.invoke("What should the IRS do to protect employees?")
 print(response)

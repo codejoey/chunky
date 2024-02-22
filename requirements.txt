@@ -1,1 +1,2 @@
-mljar-mercury==2.3.7
+mercury>=2.2.6
+

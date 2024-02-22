@@ -29,7 +29,7 @@ tiktoken==0.6.0
 tqdm==4.66.2
 typing_extensions==4.9.0
 urllib3==2.2.1
-mercury>=2.2.6
+mljar-mercury==1.1.6
 pypdf==4.0.2
 langchain==0.1.8
 langchain-community==0.0.21

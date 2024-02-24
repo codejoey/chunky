@@ -7,7 +7,7 @@ def load_and_split_pdf(pdf_location):
     loader = PyPDFLoader(pdf_location)
     pages = loader.load_and_split()
     nltk.download('punkt')
-    nltk_splitter = NLTKTextSplitter(chunk_size=1000)
+    nltk_splitter = NLTKTextSplitter(chunk_size=10000)
 
     chunks=[]
 

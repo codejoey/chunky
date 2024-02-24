@@ -2,9 +2,9 @@ import nltk
 from langchain_community.document_loaders import PyPDFLoader
 from langchain.text_splitter import NLTKTextSplitter
 
-def load_and_split_pdf:
+def load_and_split_pdf(pdf_location):
 
-    loader = PyPDFLoader("/content/lyft_2021.pdf")
+    loader = PyPDFLoader(pdf_location)
     pages = loader.load_and_split()
     nltk.download('punkt')
     nltk_splitter = NLTKTextSplitter(chunk_size=1000)
